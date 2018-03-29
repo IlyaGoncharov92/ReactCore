@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="6.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Hosting.Abstractions" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.0.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.0.2" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ReactCore.BLL.Abstract\ReactCore.BLL.Abstract.csproj" />
+    <ProjectReference Include="..\ReactCore.BLL\ReactCore.BLL.csproj" />
+    <ProjectReference Include="..\ReactCore.DAL.Abstract\ReactCore.DAL.Abstract.csproj" />
+    <ProjectReference Include="..\ReactCore.DAL\ReactCore.DAL.csproj" />
+  </ItemGroup>
+
+</Project>
