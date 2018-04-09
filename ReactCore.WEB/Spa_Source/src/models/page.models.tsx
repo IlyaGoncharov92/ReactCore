@@ -19,10 +19,15 @@ export const PageProjects: IPage = {
   path: '/projects'
 };
 
+export const PageClients: IPage = {
+  path: '/clients'
+};
+
 export class Page
 {
   public static readonly default: IPage = PageDefault;
   public static readonly dashboard: IPage = PageDashboard;
   public static readonly users: IPage = PageUsers;
   public static readonly projects: IPage = PageProjects;
+  public static readonly clients: IPage = PageClients;
 }

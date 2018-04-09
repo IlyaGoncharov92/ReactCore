@@ -35,3 +35,41 @@ body {
   flex: 1;
   padding: 20px;
 }
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container .title {
+  padding: 10px;
+}
+
+.container .container-content {
+  padding: 10px;
+}
+
+.container .container-content tr td {
+  cursor: pointer;
+  padding: 10px;
+}
+
+.container .container-content tr td:hover {
+  background: #9a9a9a;
+}
+
+.popup {
+  position: absolute;
+  background: #c3c3c3;
+  z-index: 1;
+  top: 30px;
+}
+
+.popup .popup-container {
+
+}
+
+.popup .popup-container .elem {
+  width: 135px;
+  padding: 5px;
+}

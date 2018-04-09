@@ -24,6 +24,7 @@ namespace ReactCore.WEB.Controllers
         [Route("list")]
         public List<ProjectDetails> List()
         {
+            System.Threading.Thread.Sleep(2000);
             return ProjectService.List();
         }
     }

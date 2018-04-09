@@ -11,6 +11,7 @@ export class NavigationMenuComponent extends React.Component
         <Link to={Page.default.path}>Dashboard</Link>
         <Link to={Page.users.path}>Users</Link>
         <Link to={Page.projects.path}>Projects</Link>
+        <Link to={Page.clients.path}>Clients</Link>
       </nav>
     );
   }
