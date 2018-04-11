@@ -7,6 +7,10 @@ export const PageDefault: IPage = {
   path: '/'
 };
 
+export const PageAuth: IPage = {
+  path: ''
+};
+
 export const PageDashboard: IPage = {
   path: '/dashboard'
 };

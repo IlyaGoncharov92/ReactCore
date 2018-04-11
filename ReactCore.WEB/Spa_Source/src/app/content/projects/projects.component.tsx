@@ -5,13 +5,14 @@ import { ProjectService } from '../../../services/webapi/project.service';
 import { Subscription } from 'rxjs/Subscription';
 import { ProjectComponent } from './project.component';
 import { Page } from '../../../models/page.models';
+import { RouteComponentProps } from 'react-router';
 
 export interface IProjectsComponentState
 {
   projects?: ProjectDetails[];
 }
 
-export class ProjectsComponent extends React.Component<any, IProjectsComponentState>
+export class ProjectsComponent extends React.Component<RouteComponentProps<any>, IProjectsComponentState>
 {
   private _subscription: Subscription;
   private service = new ProjectService();
