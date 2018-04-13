@@ -1,11 +1,11 @@
-import React                 from 'react';
-import ReactDOM              from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import { Provider }          from "react-redux";
-import { store }             from "./App-redux";
-import { List }              from "./App";
-import { Form }              from "./App-redux2";
+import { Provider } from "react-redux";
+import { store } from "./App-redux";
+import { List } from "./App";
+import { Form } from "./App-redux2";
 
 
 export const App = () => (

@@ -3,9 +3,12 @@ import { connect }          from "react-redux";
 import uuidv1               from "uuid";
 import { addArticle }       from "./App-redux";
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = function (dispatch) {
   return {
-    addArticle: article => dispatch(addArticle(article))
+    addArticle: function (article) {
+      console.log('dispatch', dispatch);
+      return dispatch(addArticle(article));
+    }
   };
 };
 
