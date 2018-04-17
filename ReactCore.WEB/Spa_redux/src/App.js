@@ -2,11 +2,6 @@ import React, { Component } from 'react';
 import { connect }          from "react-redux";
 import './App.css';
 
-const mapStateToProps = state => {
-  console.log('mapStateToProps', state);
-  return {articles: state.articles};
-};
-
 const ConnectedList = ({articles}) => (
   <ul>
     {
@@ -18,6 +13,11 @@ const ConnectedList = ({articles}) => (
     }
   </ul>
 );
+
+const mapStateToProps = function (state) {
+  console.log('mapStateToProps', state);
+  return {articles: state.articles};
+};
 
 export const List = connect(mapStateToProps)(ConnectedList);
 

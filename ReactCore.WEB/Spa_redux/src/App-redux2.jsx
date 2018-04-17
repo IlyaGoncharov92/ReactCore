@@ -3,15 +3,6 @@ import { connect }          from "react-redux";
 import uuidv1               from "uuid";
 import { addArticle }       from "./App-redux";
 
-const mapDispatchToProps = function (dispatch) {
-  return {
-    addArticle: function (article) {
-      console.log('dispatch', dispatch);
-      return dispatch(addArticle(article));
-    }
-  };
-};
-
 class ConnectedForm extends Component {
   constructor() {
     super();
@@ -57,5 +48,14 @@ class ConnectedForm extends Component {
     );
   }
 }
+
+const mapDispatchToProps = function (dispatch) {
+  return {
+    addArticle: function (article) {
+      console.log('dispatch', dispatch);
+      return dispatch(addArticle(article));
+    }
+  };
+};
 
 export const Form = connect(null, mapDispatchToProps)(ConnectedForm);

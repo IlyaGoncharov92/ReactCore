@@ -1,5 +1,7 @@
 import * as React from 'react';
 import './App.css';
+import { UserFormConnect } from './components/user.form.component';
+import { UserListConnect } from './components/user.list.component';
 
 class App extends React.Component
 {
@@ -7,7 +9,8 @@ class App extends React.Component
   {
     return (
       <div>
-        zzz
+        <UserFormConnect/>
+        <UserListConnect/>
       </div>
     );
   }

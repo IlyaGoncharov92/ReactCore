@@ -1,23 +1,39 @@
 import { createStore, Store } from 'redux';
+import { Dispatch } from 'react-redux';
 
-interface IInitialState
+export class User
 {
-  users: string[];
+  public id: string;
+  public email: string;
+  public firstName: string;
+  public lastName: string;
+  public age: number;
+
+  public constructor(init?: Partial<User>)
+  {
+    Object.assign(this, init);
+  }
+}
+
+export interface IInitialState
+{
+  users: User[];
 }
 
 const initialState: IInitialState = {
   users: []
 };
 
-enum ActionType {
+enum ActionType
+{
   Add,
   Delete
 }
 
-interface IInitialAction
+export interface IInitialAction
 {
   type: ActionType;
-  user: string;
+  user: User;
 }
 
 const rootReducer = function (state: IInitialState = initialState, action: IInitialAction): IInitialState
@@ -39,17 +55,26 @@ export const store: Store<IInitialState> = createStore(rootReducer);
 
 store.subscribe(() => console.log('Store subscribe.'));
 
-let res = store.getState();
+export const addUserAction = (user: User): IInitialAction => ({
+  type: ActionType.Add,
+  user: user
+});
 
+
+let res = store.getState();
 console.log('res', res);
 
-const val: IInitialAction = {
-  type: ActionType.Add,
-  user: 'zzz'
-};
+store.dispatch(
+  addUserAction(new User({id: '1', email: 'admin@gmail.com'}))
+);
 
-store.dispatch(val);
-
-let res2 = store.getState();
-
-console.log('res2', res2);
+// res = store.getState();
+// console.log('res2', res);
+//
+//
+// store.dispatch(
+//   addUserReducer(new User({id: 2, email: 'test@gmail.com'}))
+// );
+//
+// res = store.getState();
+// console.log('res2', res);

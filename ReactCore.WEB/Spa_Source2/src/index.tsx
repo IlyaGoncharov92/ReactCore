@@ -6,10 +6,8 @@ import './index.css';
 import { Provider } from 'react-redux';
 import { store } from './components/reducer';
 
-const t = store;
-
 ReactDOM.render(
-  <Provider>
+  <Provider store={store}>
     <App/>
   </Provider>,
   document.getElementById('root') as HTMLElement
