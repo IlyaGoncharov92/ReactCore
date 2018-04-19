@@ -10,8 +10,8 @@ interface IUserFormState
 
 interface IDispatchToProps
 {
+  dispatch?: Dispatch<IInitialState>;
   addUser: (user: User) => IInitialAction;
-  dispatch?: Function;
 }
 
 interface IProps extends IDispatchToProps

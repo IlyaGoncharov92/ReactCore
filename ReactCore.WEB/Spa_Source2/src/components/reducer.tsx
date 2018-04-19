@@ -36,29 +36,37 @@ export interface IInitialAction
   user: User;
 }
 
-const rootReducer = function (state: IInitialState = initialState, action: IInitialAction): IInitialState
+const rootReducer = (state: IInitialState = initialState, action: IInitialAction): IInitialState =>
 {
   switch (action.type)
   {
     case ActionType.Add:
-      const addState = {...state, users: [...state.users, action.user]};
-      console.log('addState', addState);
-      return addState;
+      const res1 = {...state, users: [...state.users, action.user]};
+      return res1;
     case ActionType.Delete:
-      return state;
+      const res = state.users.filter(x => x.id != action.user.id);
+      return {users: res};
     default:
       return state;
   }
 };
 
-export const store: Store<IInitialState> = createStore(rootReducer);
 
-store.subscribe(() => console.log('Store subscribe.'));
+export const store: Store<IInitialState> = createStore<IInitialState>(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+//store.subscribe(() => console.log('Store subscribe.'));
 
 export const addUserAction = (user: User): IInitialAction => ({
   type: ActionType.Add,
   user: user
 });
+
+export const deleteUserAction = (user: User): IInitialAction => ({
+  type: ActionType.Delete,
+  user: user
+});
+
+
 
 
 let res = store.getState();
