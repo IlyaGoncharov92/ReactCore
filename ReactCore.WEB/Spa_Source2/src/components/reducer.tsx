@@ -1,5 +1,5 @@
-import { createStore, Store } from 'redux';
 import { Dispatch } from 'react-redux';
+import { createStore, Store } from 'redux';
 
 export class User
 {
