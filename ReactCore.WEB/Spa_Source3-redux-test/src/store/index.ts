@@ -1,7 +1,7 @@
 import { combineReducers, Reducer } from 'redux';
-import { ChatState }                from './chat/types';
 import { routerReducer }            from 'react-router-redux';
 import { Dispatch }                 from 'react-redux';
+import { ChatState }                from './chat/types';
 import { chatReducer }              from './chat/reducer';
 
 export interface ApplicationState
