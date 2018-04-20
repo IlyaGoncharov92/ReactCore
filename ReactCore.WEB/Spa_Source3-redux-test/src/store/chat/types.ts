@@ -1,7 +1,11 @@
-// ./src/store/chat/types.ts
-
-// Our chat-level state object
 import { Action } from 'redux';
+
+export enum ChatActionType
+{
+  SET_USERNAME = 'SET_USERNAME',
+  USERS_LIST_UPDATED = 'USERS_LIST_UPDATED',
+  MESSAGE_RECEIVED = 'MESSAGE_RECEIVED'
+}
 
 export interface ChatState
 {
@@ -33,17 +37,15 @@ export interface MessagePayload
   };
 }
 
-// I use the `@@context/ACTION_TYPE` convention for naming action types.
-
 export interface SetAction extends Action
 {
-  type: '@@chat/SET_USERNAME';
+  type: ChatActionType.SET_USERNAME;
   payload: {};
 }
 
 export interface UsersListUpdatedAction extends Action
 {
-  type: '@@chat/USERS_LIST_UPDATED';
+  type: ChatActionType.USERS_LIST_UPDATED;
   payload: {
     users: UserInfo[];
   };
@@ -51,7 +53,7 @@ export interface UsersListUpdatedAction extends Action
 
 export interface MessageReceivedAction extends Action
 {
-  type: '@@chat/MESSAGE_RECEIVED';
+  type: ChatActionType.MESSAGE_RECEIVED;
   payload: {
     timestamp: Date;
     user: string;
