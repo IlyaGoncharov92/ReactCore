@@ -26,8 +26,8 @@ const initialState: IInitialState = {
 
 enum ActionType
 {
-  Add,
-  Delete
+  Add = 'Add',
+  Delete = 'Delete'
 }
 
 export interface IInitialAction
