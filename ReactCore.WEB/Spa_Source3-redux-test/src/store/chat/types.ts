@@ -4,7 +4,8 @@ export enum ChatActionType
 {
   SET_USERNAME = 'SET_USERNAME',
   USERS_LIST_UPDATED = 'USERS_LIST_UPDATED',
-  MESSAGE_RECEIVED = 'MESSAGE_RECEIVED'
+  MESSAGE_RECEIVED = 'MESSAGE_RECEIVED',
+  THUNK_TEST = 'THUNK_TEST'
 }
 
 export interface ChatState
@@ -61,5 +62,10 @@ export interface MessageReceivedAction extends Action
   };
 }
 
-// Внизу здесь мы создадим дискриминационный тип объединения всех действий, которые будут использоваться для нашего редуктора
-export type ChatActions = SetAction | UsersListUpdatedAction | MessageReceivedAction;
+export interface ThunkAction extends Action
+{
+  type: ChatActionType.THUNK_TEST;
+  payload: {};
+}
+
+export type ChatActions = SetAction | UsersListUpdatedAction | MessageReceivedAction | ThunkAction;

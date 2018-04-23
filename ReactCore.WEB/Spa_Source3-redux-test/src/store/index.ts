@@ -1,17 +1,18 @@
-import { combineReducers, Reducer } from 'redux';
-import { routerReducer }            from 'react-router-redux';
-import { Dispatch }                 from 'react-redux';
-import { ChatState }                from './chat/types';
-import { chatReducer }              from './chat/reducer';
+import { combineReducers, Reducer }   from 'redux';
+import { routerReducer, RouterState } from 'react-router-redux';
+import { Dispatch }                   from 'react-redux';
+import { ChatState }                  from './chat/types';
+import { chatReducer }                from './chat/reducer';
 
 export interface ApplicationState
 {
+  routing?: Reducer<RouterState>;
   chat?: ChatState;
   //layout: LayoutState
 }
 
 export const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({
-  router: routerReducer,
+  routing: routerReducer,
   chat: chatReducer,
   //layout: layoutReducer,
 });
