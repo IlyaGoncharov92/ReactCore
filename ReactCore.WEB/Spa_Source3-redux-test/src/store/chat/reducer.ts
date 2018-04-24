@@ -9,7 +9,7 @@ export const initialState: ChatState = {
 
 export const chatReducer: Reducer<ChatState> = (state: ChatState = initialState, action): ChatState =>
 {
-  switch ((action as ChatActions).type)
+  switch (action.type)
   {
     case ChatActionType.SET_USERNAME:
       return {...state, username: action.payload.username};

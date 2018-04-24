@@ -50,7 +50,7 @@ const mapStateToProps = (state: IInitialState) => state;
 
 const mapDispatchToProps = (dispatch: Dispatch<IInitialState>): IDispatchToProps => ({
   deleteUser: (user: User): IInitialAction => dispatch(deleteUserAction(user)),
-  addUser: (user: User): IInitialAction => dispatch(addUserAction(user))
+  addUser: (user: User): IInitialAction => dispatch(addUserAction(user)),
 });
 
 export const UserListConnect = connect(mapStateToProps, mapDispatchToProps)(UserListComponent);

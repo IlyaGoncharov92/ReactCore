@@ -95,14 +95,14 @@ export function AuthExample()
   return (
     <Router history={history} key={Math.random()}> //this.props.history
       <div>
-        <AuthButton/>
-        <ul>
-          <li><Link to="/public">Public Page</Link></li>
-          <li><Link to="/protected">Protected Page</Link></li>
-        </ul>
-        <Route path="/public" component={Public}/>
-        <Route path="/login" component={Login}/>
-        <PrivateRoute path='/protected' component={Protected}/>
+        {/*<AuthButton/>*/}
+        {/*<ul>*/}
+          {/*<li><Link to="/public">Public Page</Link></li>*/}
+          {/*<li><Link to="/protected">Protected Page</Link></li>*/}
+        {/*</ul>*/}
+        {/*<Route path="/public" component={Public}/>*/}
+        {/*<Route path="/login" component={Login}/>*/}
+        {/*<PrivateRoute path='/protected' component={Protected}/>*/}
       </div>
     </Router>
   );
