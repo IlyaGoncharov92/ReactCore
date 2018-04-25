@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ReactCore.DAL.Configurations;
 using ReactCore.DAL.Models;
 
 namespace ReactCore.DAL
@@ -12,12 +11,9 @@ namespace ReactCore.DAL
         }
 
         public DbSet<User> Users { get; set; }
-        public DbSet<Project> Projects { get; set; }
-        public DbSet<Client> Clients { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfiguration(new UserProjectsConfigurations());
         }
     }
 }

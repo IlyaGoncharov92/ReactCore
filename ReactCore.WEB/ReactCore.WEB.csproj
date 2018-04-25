@@ -5,9 +5,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Spa_Source2\**" />
     <Compile Remove="Spa_Source\**" />
+    <Content Remove="Spa_Source2\**" />
     <Content Remove="Spa_Source\**" />
+    <EmbeddedResource Remove="Spa_Source2\**" />
     <EmbeddedResource Remove="Spa_Source\**" />
+    <None Remove="Spa_Source2\**" />
     <None Remove="Spa_Source\**" />
   </ItemGroup>
 

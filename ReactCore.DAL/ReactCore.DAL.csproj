@@ -16,4 +16,9 @@
     <ProjectReference Include="..\ReactCore.Domain\ReactCore.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Configurations\" />
+    <Folder Include="Migrations\" />
+  </ItemGroup>
+
 </Project>

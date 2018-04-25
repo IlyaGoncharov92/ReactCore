@@ -15,12 +15,8 @@ namespace ReactCore.Configuration
         public static void Register(IServiceCollection services)
         {
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IProjectService, ProjectService>();
-            services.AddTransient<IClientService, ClientService>();
 
             services.AddTransient<IUserRepository, UserReposotory>();
-            services.AddTransient<IProjectRepository, ProjectRepository>();
-            services.AddTransient<IClientRpository, ClientRepository>();
         }
     }
 }
