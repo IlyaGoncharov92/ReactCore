@@ -4,6 +4,6 @@
     {
         Bulk,
         Individual,
-        PickUp
+        Pickup
     }
 }

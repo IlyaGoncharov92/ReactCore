@@ -11,9 +11,16 @@ namespace ReactCore.DAL
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<Agency> Agencies { get; set; }
+        public DbSet<AgencyManager> AgencyManagers { get; set; }
+        public DbSet<Volunteer> Volunteers { get; set; }
+        public DbSet<Request> Requests { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Child> Children { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
         }
     }
 }
