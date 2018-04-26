@@ -7,10 +7,13 @@ export class Main extends React.Component
   render()
   {
     return (
-      <div className='menu'>
+      <div className='main'>
         <Menu/>
-        main
-        <MainRoutes/>
+        <div className='content-wrapper'>
+          <div className='content'>
+            <MainRoutes/>
+          </div>
+        </div>
       </div>
     );
   }
