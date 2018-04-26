@@ -5,7 +5,7 @@ export class Agencies extends React.Component
   render()
   {
     return (
-      <div>
+      <div className='flex-container'>
         Agencies
       </div>
     );

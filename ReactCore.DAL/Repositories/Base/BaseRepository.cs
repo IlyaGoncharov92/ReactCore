@@ -1,10 +1,10 @@
 ﻿namespace ReactCore.DAL.Repositories
 {
-    public class Base
+    public class BaseRepository
     {
         protected ReactCoreContext Context { get; }
 
-        public Base(ReactCoreContext context)
+        public BaseRepository(ReactCoreContext context)
         {
             Context = context;
         }

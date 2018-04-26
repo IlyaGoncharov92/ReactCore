@@ -8,17 +8,16 @@ using ReactCore.Domain.User;
 
 namespace ReactCore.DAL.Repositories
 {
-    public class VolunteerRepository : BaseRepository, IVolunteerRepository
+    public class AdminManagerRepository : BaseRepository, IAdminManagerRepository
     {
-        public VolunteerRepository(ReactCoreContext context) : base(context)
+        public AdminManagerRepository(ReactCoreContext context) : base(context)
         {
         }
 
         public List<UserDetails> List()
         {
             var result = Context.Users
-                .Where(x => x.Role == UserRole.Volunteer)
-                .Include(x => x.Volunteer)
+                .Where(x => x.Role == UserRole.AdminManager)
                 .ToList();
 
             return Mapper.Map<List<UserDetails>>(result);

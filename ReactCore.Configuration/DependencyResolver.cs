@@ -14,9 +14,15 @@ namespace ReactCore.Configuration
     {
         public static void Register(IServiceCollection services)
         {
+            services.AddTransient<IAdminManagerService, AdminManagerService>();
+            services.AddTransient<IAgencyService, AgencyService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IVolunteerService, VolunteerService>();
 
+            services.AddTransient<IAdminManagerRepository, AdminManagerRepository>();
+            services.AddTransient<IAgencyRepository, AgencyRepository>();
             services.AddTransient<IUserRepository, UserReposotory>();
+            services.AddTransient<IVolunteerRepository, VolunteerRepository>();
         }
     }
 }

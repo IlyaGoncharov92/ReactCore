@@ -10,13 +10,10 @@ using ReactCore.Domain.User;
 
 namespace ReactCore.DAL.Repositories
 {
-    public class UserReposotory : IUserRepository
+    public class UserReposotory : BaseRepository, IUserRepository
     {
-        private ReactCoreContext Context { get; }
-
-        public UserReposotory(ReactCoreContext context)
+        public UserReposotory(ReactCoreContext context) : base(context)
         {
-            Context = context;
         }
 
         public List<UserDetails> List(UserRole role)
