@@ -2,7 +2,10 @@
 using System.Linq;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 using ReactCore.DAL.Abstract.Repositories;
+using ReactCore.DAL.Models;
+using ReactCore.Domain;
 using ReactCore.Domain.User;
 
 namespace ReactCore.DAL.Repositories
@@ -16,14 +19,26 @@ namespace ReactCore.DAL.Repositories
             Context = context;
         }
 
-        public List<UserDetails> List()
+        public List<UserDetails> List(UserRole role)
         {
-            return Context.Users.ProjectTo<UserDetails>().ToList();
-        }
+            var result = new List<User>();
 
-        public void Save(UserDetails user)
-        {
-            //var entity = 
+            var query = Context.Users.Where(x => x.Role == role).AsQueryable();
+
+            switch (role)
+            {
+                case UserRole.Agency:
+                    result = query.Include(x => x.Agency).ToList();
+                    break;
+                case UserRole.AgencyManager:
+                    result = query.Include(x => x.AgencyManager).ToList();
+                    break;
+                case UserRole.Volunteer:
+                    result = query.Include(x => x.Volunteer).ToList();
+                    break;
+            }
+
+            return Mapper.Map<List<UserDetails>>(result);
         }
     }
 }

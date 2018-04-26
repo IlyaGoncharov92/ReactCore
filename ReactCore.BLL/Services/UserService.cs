@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using ReactCore.BLL.Abstract.Services;
 using ReactCore.DAL.Abstract.Repositories;
+using ReactCore.Domain;
 using ReactCore.Domain.User;
 
 namespace ReactCore.BLL.Services
@@ -14,9 +15,9 @@ namespace ReactCore.BLL.Services
             UserRepository = userRepository;
         }
 
-        public List<UserDetails> List()
+        public List<UserDetails> List(UserRole role)
         {
-            return UserRepository.List();
+            return UserRepository.List(role);
         }
     }
 }

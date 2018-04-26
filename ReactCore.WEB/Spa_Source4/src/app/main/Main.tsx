@@ -1,16 +1,14 @@
 import * as React     from 'react';
-import { Link }       from 'react-router-dom';
 import { MainRoutes } from '../../routing/Routes';
-import { Page }       from '../../routing/Page';
+import { Menu }       from './menu/Menu';
 
 export class Main extends React.Component
 {
   render()
   {
     return (
-      <div>
-        <Link to={Page.users.path}>Users</Link>
-        <Link to={Page.projects.path}>Projects</Link>
+      <div className='menu'>
+        <Menu/>
         main
         <MainRoutes/>
       </div>

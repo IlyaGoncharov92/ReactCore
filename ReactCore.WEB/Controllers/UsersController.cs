@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReactCore.BLL.Abstract.Services;
+using ReactCore.Domain;
 using ReactCore.Domain.User;
 
 namespace ReactCore.WEB.Controllers
@@ -21,10 +22,10 @@ namespace ReactCore.WEB.Controllers
         }
 
         [HttpGet]
-        [Route("list")]
-        public List<UserDetails> List()
+        [Route("list/{role}")]
+        public List<UserDetails> List(UserRole role)
         {
-            return UserService.List();
+            return UserService.List(role);
         }
     }
 }

@@ -9,14 +9,19 @@ namespace ReactCore.DAL
     {
         public static void Seed(ReactCoreContext context)
         {
-            CreateAdmins(context);
-            CreateAgencies(context);
-            CreateVolunteers(context);
+            CreateUsers(context);
         }
 
-        private static void CreateAdmins(ReactCoreContext context)
+        private static void CreateUsers(ReactCoreContext context)
         {
             if (!context.Users.Any())
+            {
+                CreateAdmins();
+                CreateAgencies();
+                CreateVolunteers();
+            }
+
+            void CreateAdmins()
             {
                 context.Users.Add(new User
                 {
@@ -47,11 +52,8 @@ namespace ReactCore.DAL
 
                 context.SaveChanges();
             }
-        }
 
-        private static void CreateAgencies(ReactCoreContext context)
-        {
-            if (!context.Users.Any())
+            void CreateAgencies()
             {
                 context.Users.Add(new User
                 {
@@ -88,7 +90,7 @@ namespace ReactCore.DAL
                 });
 
                 context.SaveChanges();
-                
+
                 var agencies = context.Agencies.ToList();
 
                 context.Users.Add(new User
@@ -145,11 +147,8 @@ namespace ReactCore.DAL
 
                 context.SaveChanges();
             }
-        }
 
-        private static void CreateVolunteers(ReactCoreContext context)
-        {
-            if (!context.Users.Any())
+            void CreateVolunteers()
             {
                 context.Users.Add(new User
                 {

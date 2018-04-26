@@ -4,6 +4,7 @@ body {
   font-family: sans-serif;
 }
 
-.user-container span {
-  cursor: pointer;
+.menu {
+  width: 100%;
+  overflow: hidden;
 }

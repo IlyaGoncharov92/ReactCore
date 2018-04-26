@@ -23,12 +23,24 @@ export const PageMain: IPage = {
   path: '/main'
 };
 
-export const PageUsers: IPage = {
-  path: PageMain.path + '/users'
+export const PageRequests: IPage = {
+  path: PageMain.path + '/requests'
 };
 
-export const PageProjects: IPage = {
-  path: PageMain.path + '/projects'
+export const PageAgencies: IPage = {
+  path: PageMain.path + '/agencies'
+};
+
+export const PageDeliveries: IPage = {
+  path: PageMain.path + '/deliveries'
+};
+
+export const PageVolunteers: IPage = {
+  path: PageMain.path + '/volunteers'
+};
+
+export const PageManagers: IPage = {
+  path: PageMain.path + '/managers'
 };
 
 export class Page
@@ -40,6 +52,9 @@ export class Page
   public static readonly register: IPage = PageRegister;
 
   public static readonly main: IPage = PageMain;
-  public static readonly users: IPage = PageUsers;
-  public static readonly projects: IPage = PageProjects;
+  public static readonly requests: IPage = PageRequests;
+  public static readonly agencies: IPage = PageAgencies;
+  public static readonly deliveries: IPage = PageDeliveries;
+  public static readonly volunteers: IPage = PageVolunteers;
+  public static readonly managers: IPage = PageManagers;
 }
