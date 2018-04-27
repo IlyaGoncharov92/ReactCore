@@ -6,8 +6,8 @@ export class AgencyService
 {
   private http = new HttpService();
 
-  public list(): Observable<UserDetails>
+  public list(): Observable<UserDetails[]>
   {
-    return this.http.get<UserDetails>('api/agencies/list');
+    return this.http.get<UserDetails[]>('api/agencies/list');
   }
 }

@@ -1,8 +1,10 @@
-import * as React                 from 'react';
-import { connect }                from 'react-redux';
-import { IAppState }              from '../../../../store';
-import { IAgenciesState }         from '../../../../store/agencies/types';
-import { GetAllProps } from '../../../types';
+import * as React                           from 'react';
+import { connect }                          from 'react-redux';
+import { IAppState }                        from '../../../../store';
+import { IAgenciesState }                   from '../../../../store/agencies/types';
+import { GetAllProps }                      from '../../../types';
+import { agenciesAdd, agenciesClearAction } from '../../../../store/agencies/actions';
+import { UserDetails }                      from '../../../../models/dto.models';
 
 interface AgenciesProps
 {
@@ -11,7 +13,7 @@ interface AgenciesProps
 
 type AllProps = GetAllProps<AgenciesProps, IAgenciesState>;
 
-class Agencies extends React.Component<AllProps, {}>
+class Agencies extends React.Component<AllProps>
 {
   public constructor(props: AllProps)
   {
@@ -20,14 +22,26 @@ class Agencies extends React.Component<AllProps, {}>
 
   componentDidMount()
   {
-     console.log('props', this.props);
+    this.props.dispatch(agenciesAdd());
+  }
+
+  componentWillUnmount()
+  {
+    this.props.dispatch(agenciesClearAction())
   }
 
   render()
   {
+    console.log('Agencies render', this.props.agencies);
     return (
       <div className='flex-container'>
         Agencies
+        {
+          this.props.agencies.map((user: UserDetails) =>
+          {
+            return <div key={user.id}>{user.email}</div>;
+          })
+        }
       </div>
     );
   }

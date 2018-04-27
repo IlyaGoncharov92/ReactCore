@@ -2,16 +2,16 @@ import * as React                  from 'react';
 import { Redirect, Route, Switch } from 'react-router';
 import { BrowserRouter }           from 'react-router-dom';
 import { PrivateRoute }            from './PrivateRoute';
-import { Login }                   from '../app/auth/Login';
+import { Login }      from '../app/auth/Login';
 import { Register }   from '../app/auth/Register';
 import { Auth }       from '../app/auth/Auth';
 import { Main }       from '../app/main/Main';
 import { Page }       from './Page';
 import { Requests }   from '../app/main/views/requests/Requests';
 import { Deliveries } from '../app/main/views/deliveries/Deliveries';
-import { Volunteers } from '../app/main/views/voluteers/Volunteers';
 import { Managers }   from '../app/main/views/managers/Managers';
 import Agencies       from '../app/main/views/agencies/Agencies';
+import Volunteers     from '../app/main/views/voluteers/Volunteers';
 
 export const AppRoutes = () => (
   <BrowserRouter>
