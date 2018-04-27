@@ -1,7 +1,28 @@
-import * as React from 'react';
+import * as React                 from 'react';
+import { connect }                from 'react-redux';
+import { IAppState }              from '../../../../store';
+import { IAgenciesState }         from '../../../../store/agencies/types';
+import { GetAllProps } from '../../../types';
 
-export class Agencies extends React.Component
+interface AgenciesProps
 {
+
+}
+
+type AllProps = GetAllProps<AgenciesProps, IAgenciesState>;
+
+class Agencies extends React.Component<AllProps, {}>
+{
+  public constructor(props: AllProps)
+  {
+    super(props);
+  }
+
+  componentDidMount()
+  {
+     console.log('props', this.props);
+  }
+
   render()
   {
     return (
@@ -11,3 +32,7 @@ export class Agencies extends React.Component
     );
   }
 }
+
+const mapStateToProps = (state: IAppState) => state.agencies;
+
+export default connect(mapStateToProps)(Agencies);

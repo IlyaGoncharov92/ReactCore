@@ -3,7 +3,7 @@ import { composeWithDevTools }                                      from 'redux-
 import { routerMiddleware }                                         from 'react-router-redux';
 import thunk                                                        from 'redux-thunk';
 import { History }                                                  from 'history';
-import { ApplicationState, reducers }                               from './index';
+import { IAppState, reducers }                                      from './index';
 
 const isDevelopment =() =>
 {
@@ -11,7 +11,7 @@ const isDevelopment =() =>
   return nodeEnv === 'development';
 };
 
-export function configureStore(history: History, initialState: ApplicationState): Store<ApplicationState>
+export function configureStore(history: History, initialState: IAppState): Store<IAppState>
 {
   const composeEnhancers = isDevelopment()
     ? composeWithDevTools({})
@@ -22,7 +22,7 @@ export function configureStore(history: History, initialState: ApplicationState)
     thunk
   ];
 
-  return createStore<ApplicationState>(
+  return createStore<IAppState>(
     reducers,
     initialState,
     composeEnhancers(applyMiddleware(...middlewares)),

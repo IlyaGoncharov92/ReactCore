@@ -10,7 +10,7 @@ using ReactCore.Domain.User;
 namespace ReactCore.WEB.Controllers
 {
     [Produces("application/json")]
-    [Route("api/agency")]
+    [Route("api/agencies")]
     public class AgencyController : Controller
     {
         private IAgencyService AgencyService { get; }

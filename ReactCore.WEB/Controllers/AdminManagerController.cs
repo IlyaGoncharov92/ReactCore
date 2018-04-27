@@ -10,7 +10,7 @@ using ReactCore.Domain.User;
 namespace ReactCore.WEB.Controllers
 {
     [Produces("application/json")]
-    [Route("api/adminManager")]
+    [Route("api/adminManagers")]
     public class AdminManagerController : Controller
     {
         private IAdminManagerService AdminManagerService { get; }

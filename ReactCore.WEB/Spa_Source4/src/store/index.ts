@@ -1,20 +1,21 @@
 import { combineReducers, Dispatch, Reducer } from 'redux';
 import { routerReducer, RouterState }         from 'react-router-redux';
+import { IAgenciesState }                     from './agencies/types';
+import { agenciesReducer }                    from './agencies/reducer';
 
-export interface ApplicationState
+export interface IAppState
 {
   routing?: Reducer<RouterState>;
-  //chat?: ChatState;
-  //layout: LayoutState
+  agencies?: IAgenciesState;
 }
 
-export const reducers: Reducer<ApplicationState> = combineReducers<ApplicationState>({
+export const reducers: Reducer<IAppState> = combineReducers<IAppState>({
   routing: routerReducer,
-  //chat: chatReducer,
-  //layout: layoutReducer,
+  agencies: agenciesReducer
 });
 
-export interface ConnectedReduxProps<S>
+export interface IBaseAction<TActionType>
 {
-  dispatch: Dispatch<S>;
+  type: TActionType;
+  payload: any;
 }

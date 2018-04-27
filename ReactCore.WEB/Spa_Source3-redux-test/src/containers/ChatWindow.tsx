@@ -13,11 +13,11 @@ interface ChatWindowProps extends ConnectedReduxProps<ChatState>
 
 type AllProps = ChatWindowProps & ChatState;
 
-// const ChatWindow: React.SFC<AllProps> = ({username, messages}) => (
-//   <div>
-//     zzz
-//   </div>
-// );
+const ChatWindow1: React.SFC<AllProps> = ({username, messages}) => (
+  <div>
+    zzz
+  </div>
+);
 
 export class ChatWindow extends React.Component<AllProps, {}>
 {

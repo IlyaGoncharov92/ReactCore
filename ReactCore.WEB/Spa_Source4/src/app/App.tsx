@@ -1,13 +1,13 @@
-import * as React           from 'react';
-import { ApplicationState } from '../store';
-import createHistory        from 'history/createBrowserHistory';
-import { configureStore }   from '../store/configureStore';
-import { Provider }         from 'react-redux';
-import { ConnectedRouter }  from 'react-router-redux';
-import { AppRoutes }        from '../routing/Routes';
+import * as React          from 'react';
+import { IAppState }       from '../store';
+import createHistory       from 'history/createBrowserHistory';
+import { configureStore }  from '../store/configureStore';
+import { Provider }        from 'react-redux';
+import { ConnectedRouter } from 'react-router-redux';
+import { AppRoutes }       from '../routing/Routes';
 
 const history = createHistory();
-const initialState: ApplicationState = {};
+const initialState: IAppState = {};
 
 const store = configureStore(history, initialState);
 
