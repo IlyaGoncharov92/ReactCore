@@ -6,8 +6,7 @@ export class Auth extends React.Component
   render()
   {
     return (
-      <div>
-        Auth
+      <div className='main-auth'>
         <AuthRoutes/>
       </div>
     );

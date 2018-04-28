@@ -1,9 +1,9 @@
-import { combineReducers, Dispatch, Reducer } from 'redux';
-import { routerReducer, RouterState }         from 'react-router-redux';
-import { IAgenciesState }                     from './agencies/types';
-import { agenciesReducer }                    from './agencies/reducer';
-import { IVolunteersState }                   from './volunteers/types';
-import { volunteersReducer }                  from './volunteers/reducer';
+import { AnyAction, combineReducers, Dispatch, Reducer } from 'redux';
+import { routerReducer, RouterState }                    from 'react-router-redux';
+import { IAgenciesState }                                from './agencies/types';
+import { agenciesReducer }                               from './agencies/reducer';
+import { IVolunteersState }                              from './volunteers/types';
+import { volunteersReducer }                             from './volunteers/reducer';
 
 export interface IAppState
 {
@@ -18,7 +18,7 @@ export const reducers: Reducer<IAppState> = combineReducers<IAppState>({
   volunteers: volunteersReducer
 });
 
-export interface IBaseAction<TActionType>
+export interface IBaseAction<TActionType> extends AnyAction
 {
   type: TActionType;
   payload?: any;

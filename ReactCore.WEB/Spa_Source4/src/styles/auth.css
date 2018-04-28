@@ -1,0 +1,29 @@
+.main-auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  background: #1d2531; }
+  .main-auth .auth-container {
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    width: 400px;
+    background: white;
+    border-radius: 5px; }
+    .main-auth .auth-container .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 60px;
+      background: #e5e5ea; }
+    .main-auth .auth-container .content {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .main-auth .auth-container .content .form-item {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 15px; }

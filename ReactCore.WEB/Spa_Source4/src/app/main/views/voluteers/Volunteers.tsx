@@ -1,12 +1,12 @@
 import * as React                               from 'react';
-import { GetAllProps }                          from '../../../types';
+import { GetStoreAllProps }                     from '../../../types';
 import { IVolunteersState }                     from '../../../../store/volunteers/types';
 import { UserDetails }                          from '../../../../models/dto.models';
 import { IAppState }                            from '../../../../store';
 import { connect }                              from 'react-redux';
 import { volunteersAdd, volunteersClearAction } from '../../../../store/volunteers/actions';
 
-type AllProps = GetAllProps<{}, IVolunteersState>;
+type AllProps = GetStoreAllProps<{}, IVolunteersState>;
 
 class Volunteers extends React.Component<AllProps>
 {
