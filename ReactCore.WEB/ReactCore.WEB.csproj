@@ -6,12 +6,20 @@
 
   <ItemGroup>
     <Compile Remove="Spa_Source2\**" />
+    <Compile Remove="Spa_Source3-redux-test\**" />
+    <Compile Remove="Spa_Source4\**" />
     <Compile Remove="Spa_Source\**" />
     <Content Remove="Spa_Source2\**" />
+    <Content Remove="Spa_Source3-redux-test\**" />
+    <Content Remove="Spa_Source4\**" />
     <Content Remove="Spa_Source\**" />
     <EmbeddedResource Remove="Spa_Source2\**" />
+    <EmbeddedResource Remove="Spa_Source3-redux-test\**" />
+    <EmbeddedResource Remove="Spa_Source4\**" />
     <EmbeddedResource Remove="Spa_Source\**" />
     <None Remove="Spa_Source2\**" />
+    <None Remove="Spa_Source3-redux-test\**" />
+    <None Remove="Spa_Source4\**" />
     <None Remove="Spa_Source\**" />
   </ItemGroup>
 
@@ -26,7 +34,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ReactCore.Configuration\ReactCore.Configuration.csproj" />
-    <ProjectReference Include="..\ReactCore.DAL\ReactCore.DAL.csproj" />
     <ProjectReference Include="..\ReactCore.Domain\ReactCore.Domain.csproj" />
   </ItemGroup>
 

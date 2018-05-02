@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -10,8 +12,10 @@ using Microsoft.AspNetCore.Mvc.Cors.Internal;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using ReactCore.Configuration;
 using ReactCore.DAL;
+using ReactCore.WEB.Providers;
 
 namespace ReactCore.WEB
 {
@@ -30,11 +34,33 @@ namespace ReactCore.WEB
 
             services.AddMvc();
 
+            services.AddTransient<OAuthProvider>();
+            services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
+
             DependencyResolver.Register(services);
 
             DbContextConfig.Register(services, Configuration);
 
             MappingConfig.Register();
+
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(options =>
+                {
+                    options.TokenValidationParameters = new TokenValidationParameters
+                    {
+                        ValidateIssuer = true,
+                        ValidIssuer = Configuration["Jwt:Issuer"],
+
+                        ValidateAudience = true,
+                        ValidAudience = Configuration["Jwt:Audience"],
+
+                        ValidateIssuerSigningKey = true,
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["Jwt:Secret"])),
+
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.Zero
+                    };
+                });
         }
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
@@ -49,7 +75,12 @@ namespace ReactCore.WEB
 
                 app.UseDeveloperExceptionPage();
             }
-            
+
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
+            app.UseAuthentication();
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

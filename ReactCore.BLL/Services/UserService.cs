@@ -19,5 +19,10 @@ namespace ReactCore.BLL.Services
         {
             return UserRepository.List(role);
         }
+
+        public UserDetails GetByEmail(string email)
+        {
+            return UserRepository.GetByEmail(email);
+        }
     }
 }

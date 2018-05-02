@@ -37,5 +37,10 @@ namespace ReactCore.DAL.Repositories
 
             return Mapper.Map<List<UserDetails>>(result);
         }
+
+        public UserDetails GetByEmail(string email)
+        {
+            return Context.Users.ProjectTo<UserDetails>().FirstOrDefault(x => x.Email == email);
+        }
     }
 }

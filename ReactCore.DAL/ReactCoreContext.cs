@@ -11,6 +11,7 @@ namespace ReactCore.DAL
         }
 
         public DbSet<User> Users { get; set; }
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
         public DbSet<Agency> Agencies { get; set; }
         public DbSet<AgencyManager> AgencyManagers { get; set; }
         public DbSet<Volunteer> Volunteers { get; set; }

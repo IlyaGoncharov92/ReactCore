@@ -18,11 +18,13 @@ namespace ReactCore.Configuration
             services.AddTransient<IAgencyService, AgencyService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IVolunteerService, VolunteerService>();
+            services.AddTransient<IRefreshTokenService, RefreshTokenService>();
 
             services.AddTransient<IAdminManagerRepository, AdminManagerRepository>();
             services.AddTransient<IAgencyRepository, AgencyRepository>();
             services.AddTransient<IUserRepository, UserReposotory>();
             services.AddTransient<IVolunteerRepository, VolunteerRepository>();
+            services.AddTransient<IRefreshTokenRepository, RefreshTokenRepository>();
         }
     }
 }

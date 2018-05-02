@@ -7,5 +7,6 @@ namespace ReactCore.BLL.Abstract.Services
     public interface IUserService
     {
         List<UserDetails> List(UserRole role);
+        UserDetails GetByEmail(string email);
     }
 }

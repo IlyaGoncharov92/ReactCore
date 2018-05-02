@@ -10,6 +10,7 @@ namespace ReactCore.Configuration
             Mapper.Initialize(x =>
             {
                 x.AddProfile<UserProfile>();
+                x.AddProfile<RefreshTokenProfile>();
                 x.AddProfile<RequestProfile>();
                 x.AddProfile<ChildProfile>();
             });
