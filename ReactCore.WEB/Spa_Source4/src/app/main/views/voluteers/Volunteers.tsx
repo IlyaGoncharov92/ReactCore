@@ -24,8 +24,9 @@ class Volunteers extends React.Component<AllProps>
   {
     console.log('Volunteers render', this.props.volunteers);
     return (
-      <div>
-        Volunteers
+      <div className='flex-container'>
+        <div className='title'>Volunteers</div>
+
         {
           this.props.volunteers.map((user: UserDetails) =>
           {

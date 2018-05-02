@@ -11,7 +11,8 @@
     height: 300px;
     width: 400px;
     background: white;
-    border-radius: 5px; }
+    border-radius: 5px;
+    overflow: hidden; }
     .main-auth .auth-container .header {
       display: flex;
       align-items: center;

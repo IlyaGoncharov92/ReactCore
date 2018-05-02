@@ -18,6 +18,9 @@
         color: #9fc0e9; }
       .main .menu .item .selected {
         color: #00fff6; }
+      .main .menu .item.logout {
+        position: absolute;
+        bottom: 20px; }
   .main .content-wrapper {
     flex: 1;
     height: 100vh;

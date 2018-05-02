@@ -1,6 +1,6 @@
 import * as React        from 'react';
 import { Page }          from '../../../routing/Page';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export class Menu extends React.Component
 {
@@ -22,6 +22,9 @@ export class Menu extends React.Component
         </div>
         <div className='item'>
           <NavLink to={Page.managers.path} activeClassName='selected'>Managers</NavLink>
+        </div>
+        <div className='item logout'>
+          <Link to={Page.login.path}>Logout</Link>
         </div>
       </div>
     );

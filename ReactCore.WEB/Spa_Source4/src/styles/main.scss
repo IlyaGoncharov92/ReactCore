@@ -26,6 +26,11 @@
       .selected {
         color: rgb(0, 255, 246);
       }
+
+      &.logout {
+        position: absolute;
+        bottom: 20px;
+      }
     }
   }
 
