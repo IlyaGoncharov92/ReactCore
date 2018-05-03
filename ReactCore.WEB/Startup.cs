@@ -10,8 +10,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using ReactCore.Common.AppSettings;
 using ReactCore.Configuration;
-using ReactCore.WEB.CConfig;
 using ReactCore.WEB.Providers;
 
 namespace ReactCore.WEB
@@ -30,40 +30,43 @@ namespace ReactCore.WEB
             services.AddCors();
 
             services.AddMvc();
-
-
+            
             services.AddOptions();
-            services.Configure<AppConfig>(Configuration);
-            services.AddTransient<IAppConfig, ConfigurationOptions>();
-
-
+            services.Configure<AppSettingsConfig>(Configuration);
+            services.AddTransient<IAppConfigurations, AppConfigurations>();
+            
             services.AddTransient<OAuthProvider>();
             services.AddTransient<IHttpContextAccessor, HttpContextAccessor>();
 
             DependencyResolver.Register(services);
-
-            DbContextConfig.Register(services, Configuration);
-
+            
             MappingConfig.Register();
+            
+            using (var provider = services.BuildServiceProvider())
+            {
+                var config = provider.GetService<IAppConfigurations>();
 
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options =>
-                {
-                    options.TokenValidationParameters = new TokenValidationParameters
+                DbContextConfig.Register(services, config);
+
+                services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
                     {
-                        ValidateIssuer = true,
-                        ValidIssuer = Configuration["Jwt:Issuer"],
+                        options.TokenValidationParameters = new TokenValidationParameters
+                        {
+                            ValidateIssuer = true,
+                            ValidIssuer = config.Jwt.Issuer,
 
-                        ValidateAudience = true,
-                        ValidAudience = Configuration["Jwt:Audience"],
+                            ValidateAudience = true,
+                            ValidAudience = config.Jwt.Audience,
 
-                        ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Configuration["Jwt:Secret"])),
+                            ValidateIssuerSigningKey = true,
+                            IssuerSigningKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(config.Jwt.Secret)),
 
-                        ValidateLifetime = true,
-                        ClockSkew = TimeSpan.Zero
-                    };
-                });
+                            ValidateLifetime = true,
+                            ClockSkew = TimeSpan.Zero
+                        };
+                    });
+            }  
         }
         
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

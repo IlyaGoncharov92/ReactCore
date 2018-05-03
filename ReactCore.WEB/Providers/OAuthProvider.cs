@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using ReactCore.BLL.Abstract.Services;
+using ReactCore.Common.AppSettings;
 using ReactCore.DAL.Repositories;
 using ReactCore.Domain;
 using ReactCore.Domain.RefreshToken;
@@ -19,7 +20,7 @@ namespace ReactCore.WEB.Providers
 {
     public class OAuthProvider
     {
-        private IConfiguration Config { get; }
+        private IAppConfigurations Config { get; }
         private IHttpContextAccessor HttpContextAccessor { get; }
         private IUserService UserService { get; }
         private IRefreshTokenService RefreshTokenService { get; }
@@ -27,7 +28,7 @@ namespace ReactCore.WEB.Providers
         private static TimeSpan AccessTokenExpires => TimeSpan.FromSeconds(15);
         private static DateTime RefreshTokenExpires => DateTime.UtcNow.AddMinutes(2);
 
-        public OAuthProvider(IConfiguration config, IHttpContextAccessor httpContextAccessor, IUserService userService, IRefreshTokenService refreshTokenService)
+        public OAuthProvider(IAppConfigurations config, IHttpContextAccessor httpContextAccessor, IUserService userService, IRefreshTokenService refreshTokenService)
         {
             Config = config;
             HttpContextAccessor = httpContextAccessor;
@@ -91,11 +92,11 @@ namespace ReactCore.WEB.Providers
 
             var claims = CreateClaims(user);
 
-            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Config["Jwt:Secret"]));
+            var signingKey = new SymmetricSecurityKey(Encoding.ASCII.GetBytes(Config.Jwt.Secret));
 
             var jwt = new JwtSecurityToken(
-                issuer: Config["Jwt:Issuer"],
-                audience: Config["Jwt:Audience"],
+                issuer: Config.Jwt.Issuer,
+                audience: Config.Jwt.Audience,
                 claims: claims,
                 notBefore: now,
                 expires: now.Add(AccessTokenExpires),

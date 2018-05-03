@@ -15,6 +15,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ReactCore.BLL.Abstract\ReactCore.BLL.Abstract.csproj" />
     <ProjectReference Include="..\ReactCore.BLL\ReactCore.BLL.csproj" />
+    <ProjectReference Include="..\ReactCore.Common\ReactCore.Common.csproj" />
     <ProjectReference Include="..\ReactCore.DAL.Abstract\ReactCore.DAL.Abstract.csproj" />
     <ProjectReference Include="..\ReactCore.DAL\ReactCore.DAL.csproj" />
   </ItemGroup>

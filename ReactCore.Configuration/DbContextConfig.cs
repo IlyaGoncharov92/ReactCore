@@ -4,15 +4,16 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using ReactCore.Common.AppSettings;
 using ReactCore.DAL;
 
 namespace ReactCore.Configuration
 {
     public static class DbContextConfig
     {
-        public static void Register(IServiceCollection services, IConfiguration configuration)
+        public static void Register(IServiceCollection services, IAppConfigurations config)
         {
-            var connection = configuration.GetConnectionString("DefaultConnection");
+            var connection = config.ConnectionStrings.DefaultConnection;
 
             services.AddDbContext<ReactCoreContext>(options => options.UseSqlServer(connection));
         }

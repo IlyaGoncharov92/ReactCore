@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ReactCore.Common\ReactCore.Common.csproj" />
     <ProjectReference Include="..\ReactCore.Configuration\ReactCore.Configuration.csproj" />
     <ProjectReference Include="..\ReactCore.Domain\ReactCore.Domain.csproj" />
   </ItemGroup>
