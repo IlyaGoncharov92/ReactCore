@@ -1,5 +1,5 @@
 import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Observable }                                      from 'rxjs/Observable';
+import { Observable }                                                            from 'rxjs/index';
 
 export enum HttpRequestMethod
 {

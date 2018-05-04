@@ -1,5 +1,12 @@
 import { DeliveryType, GenderType, OrderStatus, RequestStatus, UserRole } from './dto.enums';
 
+export class OperationResult<T>
+{
+  public object: T;
+  public success: boolean;
+  public message: string;
+}
+
 export class Entity
 {
   public id: number;

@@ -12,7 +12,7 @@ using System;
 namespace ReactCore.DAL.Migrations
 {
     [DbContext(typeof(ReactCoreContext))]
-    [Migration("20180426105946_Init")]
+    [Migration("20180504115223_Init")]
     partial class Init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -106,6 +106,18 @@ namespace ReactCore.DAL.Migrations
                     b.HasIndex("VolunteerId");
 
                     b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("ReactCore.DAL.Models.RefreshToken", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("ExpiresUtc");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RefreshTokens");
                 });
 
             modelBuilder.Entity("ReactCore.DAL.Models.Request", b =>

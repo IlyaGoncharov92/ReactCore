@@ -1,10 +1,16 @@
-import * as React      from 'react';
-import { GetAllProps } from '../types';
+import * as React          from 'react';
+import { GetAllProps }     from '../types';
+import { LoginService }    from '../../services/webapi/login.service';
+import { Authentication }  from '../../models/auth.models';
+import { OperationResult } from '../../models/dto.models';
+import { Page }            from '../../routing/Page';
 
 type AllProps = GetAllProps;
 
 export class Login extends React.Component<AllProps>
 {
+  private loginService = new LoginService();
+
   private emailElement: HTMLInputElement;
   private passwordElement: HTMLInputElement;
 
@@ -21,6 +27,15 @@ export class Login extends React.Component<AllProps>
     console.log('event', event);
 
     console.log('email', this.emailElement.value);
+
+    this.loginService.login(this.emailElement.value, this.passwordElement.value)
+      .subscribe((result: OperationResult<Authentication>) =>
+      {
+        if (result.success)
+        {
+          this.props.history.push(Page.requests.path);
+        }
+      });
   }
 
   render()
@@ -38,7 +53,7 @@ export class Login extends React.Component<AllProps>
             </div>
             <div className='form-item'>
               <label>Password</label>
-              <input type="password" name="password"/>
+              <input type="password" name="password" ref={(input) => this.passwordElement = input}/>
             </div>
             <input type="submit" value="Sign in"/>
           </form>

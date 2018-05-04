@@ -107,6 +107,18 @@ namespace ReactCore.DAL.Migrations
                     b.ToTable("Orders");
                 });
 
+            modelBuilder.Entity("ReactCore.DAL.Models.RefreshToken", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<DateTime>("ExpiresUtc");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RefreshTokens");
+                });
+
             modelBuilder.Entity("ReactCore.DAL.Models.Request", b =>
                 {
                     b.Property<long>("Id")
