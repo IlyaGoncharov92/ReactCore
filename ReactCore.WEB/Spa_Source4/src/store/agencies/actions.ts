@@ -26,6 +26,10 @@ export const agenciesAdd = () =>
     service.list().subscribe((users: UserDetails[]) =>
     {
       dispatch(agenciesAddAction(users));
+    },
+    err =>
+    {
+      console.log('AGENSY ERR', err);
     });
   }
 };

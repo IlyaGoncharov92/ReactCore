@@ -23,6 +23,7 @@ namespace ReactCore.WEB.Controllers
         [Route("list")]
         public List<UserDetails> List()
         {
+            var t = int.Parse("ZZZ");
             return AgencyService.List();
         }
     }
