@@ -1,7 +1,11 @@
-import axios, { AxiosInstance, AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Observable, throwError }                                                from 'rxjs/index';
-import { AuthService }                                                           from '../auth.service';
-import { catchError }                                                            from 'rxjs/internal/operators';
+import axios, { AxiosError, AxiosInstance, AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { Observable, throwError }                                                            from 'rxjs/index';
+import { AuthService }                                                                       from '../auth.service';
+import {
+  catchError, concatMap, mapTo,
+  mergeMap, switchMap
+} from 'rxjs/internal/operators';
+import { AccessTokenService }                                                                from './access.token.service';
 
 export enum HttpRequestMethod
 {
@@ -26,7 +30,6 @@ class Interceptor
   public constructor(private httpClient: AxiosInstance)
   {
     httpClient.interceptors.request.use(this.onFulfilled);
-    //httpClient.interceptors.response.use(null, this.onFulfilled1);
   }
 
   private onFulfilled = (config: AxiosRequestConfig) =>
@@ -40,15 +43,45 @@ class Interceptor
 
     return config;
   };
-
-  private onFulfilled1 = (err: any) =>
-  {
-    console.log('INTER ERR', err);
-    throw err;
-  };
 }
 
-export class BaseHttpService
+class HttpErrorHandler<T>
+{
+  private accessTokenService = new AccessTokenService();
+
+  public constructor(private observable: Observable<T>)
+  {
+  }
+
+  public handle(): Observable<T>
+  {
+    return this.observable.pipe(
+      catchError((error: AxiosError) =>
+      {
+        console.log('pipe ERR', error.response);
+
+        switch (error.response.status)
+        {
+          case 401:
+            return this.accessTokenService.refresh().pipe(
+              concatMap(() =>
+              {
+                console.log('401');
+                return this.observable;
+              })
+            );
+          case 500:
+            console.log('error', error.response);
+            break;
+        }
+
+        return throwError(error);
+      })
+    );
+  }
+}
+
+class BaseHttpService
 {
   private _httpClient: AxiosInstance;
 
@@ -69,7 +102,7 @@ export class BaseHttpService
 
     let request: AxiosPromise<T> = this._httpClient.request(requestConfig);
 
-    return new Observable<T>(subscriber =>
+    const observable = new Observable<T>(subscriber =>
     {
       request
         .then(response =>
@@ -82,14 +115,9 @@ export class BaseHttpService
           subscriber.error(error);
           subscriber.complete();
         });
-    })
-      .pipe(
-      catchError(err =>
-      {
-        console.log('pipe ERR', err);
-        return throwError(err);
-      })
-    );
+    });
+
+    return new HttpErrorHandler<T>(observable).handle();
   }
 }
 

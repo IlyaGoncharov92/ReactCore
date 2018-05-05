@@ -1,6 +1,8 @@
+type GrantType = 'password' | 'refresh_token'
+
 export class JWTRequest
 {
-  public grant_type: string;
+  public grant_type: GrantType;
   public refresh_token: string;
   public username: string;
   public password: string;

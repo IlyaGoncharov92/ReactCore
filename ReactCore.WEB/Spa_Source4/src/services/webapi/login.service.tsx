@@ -1,34 +1,14 @@
-import { HttpService }                from './http.service';
-import { JWTRequest, Authentication } from '../../models/auth.models';
-import { OperationResult }            from '../../models/dto.models';
-import { AuthService }                from '../auth.service';
-import { Observable }                 from 'rxjs/index';
-import { map }                        from 'rxjs/operators';
+import { Authentication }     from '../../models/auth.models';
+import { OperationResult }    from '../../models/dto.models';
+import { Observable }         from 'rxjs/index';
+import { AccessTokenService } from './access.token.service';
 
 export class LoginService
 {
-  private http = new HttpService();
-  private authService = new AuthService();
+  private accessTokenService = new AccessTokenService();
 
-  public login(username: string, password: string): Observable<OperationResult<Authentication>>
+  public login(email: string, password: string): Observable<OperationResult<Authentication>>
   {
-    const request = new JWTRequest();
-    request.grant_type = 'password';
-    request.username = username;
-    request.password = password;
-
-    return this.http.post('api/token', request)
-      .pipe(
-        map((response: OperationResult<Authentication>) =>
-        {
-          console.log('response', response);
-
-          if (response.success)
-          {
-            this.authService.initialize(response.object);
-          }
-          return response;
-        })
-      );
+    return this.accessTokenService.authenticate(email, password);
   }
 }

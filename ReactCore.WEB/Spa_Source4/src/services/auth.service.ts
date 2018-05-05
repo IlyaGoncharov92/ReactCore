@@ -15,12 +15,12 @@ export class AuthService
 
   public get refreshToken(): string
   {
-    return this.auth.refresh_token;
+    return this.auth ? this.auth.refresh_token : null;
   }
 
   public get accessToken(): string
   {
-    return this.auth.access_token;
+    return this.auth ? this.auth.access_token : null;
   }
 
   public get authentication(): Authentication

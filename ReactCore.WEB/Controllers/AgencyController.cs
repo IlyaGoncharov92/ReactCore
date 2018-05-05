@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using ReactCore.BLL.Abstract.Services;
@@ -20,6 +21,7 @@ namespace ReactCore.WEB.Controllers
             AgencyService = agencyService;
         }
 
+        [Authorize]
         [Route("list")]
         public List<UserDetails> List()
         {
