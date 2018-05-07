@@ -14,10 +14,11 @@ export class Entity
 
 export class UserDetails extends Entity
 {
-  public email: number;
+  public email: string;
   public password: string;
   public firstName: string;
   public lastName: string;
+  public fullName: string;
   public role: UserRole;
   public agency: AgencyDetails;
   public agencyManager: AgencyManagerDetails;

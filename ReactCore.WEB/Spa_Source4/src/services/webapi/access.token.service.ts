@@ -42,7 +42,7 @@ export class AccessTokenService
 
     const request = new JWTRequest();
     request.grant_type = 'refresh_token';
-    request.username = auth.username;
+    request.username = auth.user.email;
     request.refresh_token = this.authService.refreshToken;
 
     return this.http.post('api/token', request).pipe(

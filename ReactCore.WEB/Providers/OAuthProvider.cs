@@ -109,7 +109,7 @@ namespace ReactCore.WEB.Providers
                 access_token = encodedJwt,
                 expires_in = (int)AccessTokenExpires.TotalSeconds,
                 refresh_token = refreshToken,
-                username = user.Email
+                User = user
             };
         }
 

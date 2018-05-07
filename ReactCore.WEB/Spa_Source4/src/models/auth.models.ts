@@ -1,3 +1,5 @@
+import { UserDetails } from './dto.models';
+
 type GrantType = 'password' | 'refresh_token'
 
 export class JWTRequest
@@ -13,5 +15,5 @@ export class Authentication
   public access_token: string;
   public expires_in: number;
   public refresh_token: string;
-  public username: string;
+  public user: UserDetails;
 }
