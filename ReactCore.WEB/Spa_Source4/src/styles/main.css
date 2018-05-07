@@ -21,12 +21,28 @@
       .main .menu .item.logout {
         position: absolute;
         bottom: 20px; }
+  .main .header-container {
+    background: #e2e2e2;
+    position: fixed;
+    width: calc(100% - 100px);
+    height: 50px;
+    right: 0; }
+    .main .header-container .header-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      height: 100%; }
+      .main .header-container .header-wrapper .user-info {
+        margin-right: 30px; }
   .main .content-wrapper {
     flex: 1;
     height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
-    background: #fafbfc; }
+    background: #fafbfc;
+    margin-top: 50px; }
     .main .content-wrapper .content {
       width: 100%;
       height: 100%;

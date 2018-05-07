@@ -25,8 +25,8 @@ namespace ReactCore.WEB.Providers
         private IUserService UserService { get; }
         private IRefreshTokenService RefreshTokenService { get; }
 
-        private static TimeSpan AccessTokenExpires => TimeSpan.FromSeconds(15);
-        private static DateTime RefreshTokenExpires => DateTime.UtcNow.AddMinutes(2);
+        private static TimeSpan AccessTokenExpires => TimeSpan.FromSeconds(30);
+        private static DateTime RefreshTokenExpires => DateTime.UtcNow.AddHours(2);
 
         public OAuthProvider(IAppConfigurations config, IHttpContextAccessor httpContextAccessor, IUserService userService, IRefreshTokenService refreshTokenService)
         {
