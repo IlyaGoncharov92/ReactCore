@@ -35,10 +35,9 @@ export class AccessTokenService
   {
     const auth = this.authService.authentication;
 
-    console.log('refresh auth', auth);
     if (!auth)
     {
-      //redirect
+      // TODO: redirect
     }
 
     const request = new JWTRequest();
@@ -57,7 +56,7 @@ export class AccessTokenService
         }
         else
         {
-          new Error('Err');
+          new Error(response.message);
         }
         return response;
       })

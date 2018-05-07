@@ -8,39 +8,58 @@
 
   .auth-container {
     display: flex;
-    flex-direction: column;
-    height: 300px;
-    width: 400px;
-    background: white;
-    border-radius: 5px;
-    overflow: hidden;
+    align-items: center;
 
-    .header {
+    .auth-wrapper {
       display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 60px;
-      background: #e5e5ea;
+      flex-direction: column;
+      height: 300px;
+      width: 400px;
+      background: white;
+      border-radius: 5px;
+      overflow: hidden;
 
-      .text {
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 60px;
+        background: #e5e5ea;
 
+        .text {
+
+        }
+      }
+
+      .content {
+        flex: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .form-item {
+          display: flex;
+          flex-direction: column;
+          margin-bottom: 15px;
+        }
+
+        [type="submit"] {
+
+        }
       }
     }
 
-    .content {
-      flex: 1;
+    .user-list-wrapper {
       display: flex;
-      align-items: center;
+      flex-direction: column;
       justify-content: center;
+      align-items: center;
+      margin-left: 10px;
+      background: white;
+      height: 100%;
 
-      .form-item {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 15px;
-      }
-
-      [type="submit"] {
-
+      button {
+        margin: 5px;
       }
     }
   }

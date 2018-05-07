@@ -1,11 +1,8 @@
-import axios, { AxiosError, AxiosInstance, AxiosPromise, AxiosRequestConfig, AxiosResponse } from 'axios';
-import { Observable, throwError }                                                            from 'rxjs/index';
-import { AuthService }                                                                       from '../auth.service';
-import {
-  catchError, concatMap, mapTo,
-  mergeMap, switchMap
-} from 'rxjs/internal/operators';
-import { AccessTokenService }                                                                from './access.token.service';
+import axios, { AxiosError, AxiosInstance, AxiosPromise, AxiosRequestConfig } from 'axios';
+import { Observable, throwError }                                             from 'rxjs/index';
+import { AuthService }                                                        from '../auth.service';
+import { catchError, map, mergeMap }                                          from 'rxjs/internal/operators';
+import { AccessTokenService }                                                 from './access.token.service';
 
 export enum HttpRequestMethod
 {
@@ -58,17 +55,11 @@ class HttpErrorHandler<T>
     return this.observable.pipe(
       catchError((error: AxiosError) =>
       {
-        console.log('pipe ERR', error.response);
-
         switch (error.response.status)
         {
           case 401:
             return this.accessTokenService.refresh().pipe(
-              concatMap(() =>
-              {
-                console.log('401');
-                return this.observable;
-              })
+              mergeMap(() => this.observable)
             );
           case 500:
             console.log('error', error.response);
@@ -115,7 +106,9 @@ class BaseHttpService
           subscriber.error(error);
           subscriber.complete();
         });
-    });
+    }).pipe(
+      map(x => x)
+    );
 
     return new HttpErrorHandler<T>(observable).handle();
   }
