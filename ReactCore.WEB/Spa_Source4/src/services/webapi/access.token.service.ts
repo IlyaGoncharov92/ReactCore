@@ -4,6 +4,8 @@ import { OperationResult }            from '../../models/dto.models';
 import { HttpService }                from './http.service';
 import { AuthService }                from '../auth.service';
 import { map }                        from 'rxjs/operators';
+import { routeNavigate }              from '../../app/App';
+import { Page }                       from '../../routing/Page';
 
 export class AccessTokenService
 {
@@ -37,7 +39,7 @@ export class AccessTokenService
 
     if (!auth)
     {
-      // TODO: redirect
+      routeNavigate(Page.login.path);
     }
 
     const request = new JWTRequest();

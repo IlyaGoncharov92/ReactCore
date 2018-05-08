@@ -74,6 +74,8 @@ class HttpErrorHandler<T>
 
 class BaseHttpService
 {
+  private authService = new AuthService();
+
   private _httpClient: AxiosInstance;
 
   protected constructor(config: IAxiosConfig = {})
@@ -85,10 +87,17 @@ class BaseHttpService
 
   protected makeRequest<T>(method: HttpRequestMethod, url: string, data?: any): Observable<T>
   {
+    const accessToken = this.authService.accessToken;
+
     const requestConfig: AxiosRequestConfig = {
       url: url,
       method: HttpRequestMethod[method],
-      data: data
+      data: data,
+      headers: {
+        Test: 'zzzz',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`
+      }
     };
 
     let request: AxiosPromise<T> = this._httpClient.request(requestConfig);

@@ -7,6 +7,12 @@ import { ConnectedRouter } from 'react-router-redux';
 import { AppRoutes }       from '../routing/Routes';
 
 const history = createHistory();
+
+export const routeNavigate = (url: string): void =>
+{
+  history.push(url);
+};
+
 const initialState: IAppState = {};
 
 const store = configureStore(history, initialState);
