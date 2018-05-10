@@ -1,7 +1,7 @@
 import * as React     from 'react';
 import { MainRoutes } from '../../routing/Routes';
-import { Menu }       from './menu/Menu';
-import { Header }     from './Header';
+import Header         from './Header';
+import Menu           from './menu/Menu';
 
 export class Main extends React.Component
 {

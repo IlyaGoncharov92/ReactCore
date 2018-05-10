@@ -27,8 +27,8 @@ namespace ReactCore.DAL
                 {
                     Email = "admin@itmint.ca",
                     Password = "admin@itmint.ca",
-                    FirstName = "Admin",
-                    LastName = "Admin",
+                    FirstName = "Max",
+                    LastName = "Truchanovich",
                     Role = UserRole.SuperAdmin
                 });
 
@@ -36,8 +36,8 @@ namespace ReactCore.DAL
                 {
                     Email = "adminmanager1@itmint.ca",
                     Password = "adminmanager1@itmint.ca",
-                    FirstName = "Admin1",
-                    LastName = "Manager1",
+                    FirstName = "Эдуард",
+                    LastName = "Старжинский",
                     Role = UserRole.AdminManager
                 });
 
@@ -45,8 +45,8 @@ namespace ReactCore.DAL
                 {
                     Email = "adminmanager2@itmint.ca",
                     Password = "adminmanager2@itmint.ca",
-                    FirstName = "Admin2",
-                    LastName = "Manager2",
+                    FirstName = "Vlad",
+                    LastName = "Petrov",
                     Role = UserRole.AdminManager
                 });
 
@@ -59,8 +59,8 @@ namespace ReactCore.DAL
                 {
                     Email = "agency1@itmint.ca",
                     Password = "agency1@itmint.ca",
-                    FirstName = "Agency1",
-                    LastName = "Agency111",
+                    FirstName = "Aleksey",
+                    LastName = "Magazinnikov",
                     Role = UserRole.Agency,
                     Agency = new Agency
                     {
@@ -76,8 +76,8 @@ namespace ReactCore.DAL
                 {
                     Email = "agency2@itmint.ca",
                     Password = "agency2@itmint.ca",
-                    FirstName = "Agency2",
-                    LastName = "Agency222",
+                    FirstName = "Ilya",
+                    LastName = "Goncharov",
                     Role = UserRole.Agency,
                     Agency = new Agency
                     {
@@ -97,8 +97,8 @@ namespace ReactCore.DAL
                 {
                     Email = "agencyManager1@itmint.ca",
                     Password = "agencyManager1@itmint.ca",
-                    FirstName = "AgencyManager1",
-                    LastName = "AgencyManager1111",
+                    FirstName = "Alex",
+                    LastName = "Yandolin",
                     Role = UserRole.AgencyManager,
                     AgencyManager = new AgencyManager
                     {
@@ -110,8 +110,8 @@ namespace ReactCore.DAL
                 {
                     Email = "agencyManager2@itmint.ca",
                     Password = "agencyManager2@itmint.ca",
-                    FirstName = "AgencyManager2",
-                    LastName = "AgencyManager222",
+                    FirstName = "Vadzim",
+                    LastName = "Dvorak",
                     Role = UserRole.AgencyManager,
                     AgencyManager = new AgencyManager
                     {
@@ -123,8 +123,8 @@ namespace ReactCore.DAL
                 {
                     Email = "agencyManager3@itmint.ca",
                     Password = "agencyManager3@itmint.ca",
-                    FirstName = "AgencyManager3",
-                    LastName = "AgencyManager3333",
+                    FirstName = "Yasya",
+                    LastName = "Petrov",
                     Role = UserRole.AgencyManager,
                     AgencyManager = new AgencyManager
                     {
@@ -136,8 +136,8 @@ namespace ReactCore.DAL
                 {
                     Email = "agencyManager4@itmint.ca",
                     Password = "agencyManager4@itmint.ca",
-                    FirstName = "AgencyManager4",
-                    LastName = "AgencyManager4444",
+                    FirstName = "Max",
+                    LastName = "Petrov",
                     Role = UserRole.AgencyManager,
                     AgencyManager = new AgencyManager
                     {
@@ -154,8 +154,8 @@ namespace ReactCore.DAL
                 {
                     Email = "volunteer1@itmint.ca",
                     Password = "volunteer1@itmint.ca",
-                    FirstName = "Volunteer1",
-                    LastName = "Volunteer111",
+                    FirstName = "Alex",
+                    LastName = "Petrov",
                     Role = UserRole.Volunteer
                 });
 
@@ -163,8 +163,8 @@ namespace ReactCore.DAL
                 {
                     Email = "volunteer2@itmint.ca",
                     Password = "volunteer2@itmint.ca",
-                    FirstName = "Volunteer2",
-                    LastName = "Volunteer222",
+                    FirstName = "Ed",
+                    LastName = "Petrov",
                     Role = UserRole.Volunteer
                 });
 

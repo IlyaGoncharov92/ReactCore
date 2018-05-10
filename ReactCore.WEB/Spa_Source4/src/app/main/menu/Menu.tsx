@@ -1,9 +1,29 @@
-import * as React        from 'react';
-import { Page }          from '../../../routing/Page';
-import { Link, NavLink } from 'react-router-dom';
+import * as React                             from 'react';
+import { Page }                               from '../../../routing/Page';
+import { Link, NavLink }                      from 'react-router-dom';
+import { routeNavigate, store }               from '../../App';
+import { authenticationLogOut, REDIRECTTEST } from '../../../store/authenticate/actions';
+import { push }                               from 'react-router-redux';
+import { Redirect, withRouter }               from 'react-router';
 
-export class Menu extends React.Component
+class Menu extends React.Component
 {
+  constructor(props: any)
+  {
+    super(props);
+
+    this.onLogout = this.onLogout.bind(this);
+  }
+
+  onLogout(e: any): void
+  {
+    e.preventDefault();
+
+    //routeNavigate(Page.deliveries.path);
+    //store.dispatch(push(Page.deliveries.path));
+    console.log('this.props', this.props);
+  }
+
   render()
   {
     return (
@@ -24,9 +44,11 @@ export class Menu extends React.Component
           <NavLink to={Page.managers.path} activeClassName='selected'>Managers</NavLink>
         </div>
         <div className='item logout'>
-          <Link to={Page.login.path}>Logout</Link>
+          <div onClick={this.onLogout}>Logout</div>
         </div>
       </div>
     );
   }
 }
+
+export default withRouter(Menu);

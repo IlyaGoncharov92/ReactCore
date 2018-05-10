@@ -4,7 +4,7 @@ import { OperationResult }            from '../../models/dto.models';
 import { HttpService }                from './http.service';
 import { AuthService }                from '../auth.service';
 import { map }                        from 'rxjs/operators';
-import { routeNavigate }              from '../../app/App';
+import { routeNavigate, store }       from '../../app/App';
 import { Page }                       from '../../routing/Page';
 
 export class AccessTokenService
@@ -35,17 +35,17 @@ export class AccessTokenService
 
   public refresh(): Observable<OperationResult<Authentication>>
   {
-    const auth = this.authService.authentication;
+    const auth = store.getState().authentication;
 
-    if (!auth)
+    if (!auth || !auth.authentication)
     {
       routeNavigate(Page.login.path);
     }
 
     const request = new JWTRequest();
     request.grant_type = 'refresh_token';
-    request.username = auth.user.email;
-    request.refresh_token = this.authService.refreshToken;
+    request.username = auth.authentication.user.email;
+    request.refresh_token = auth.authentication.refresh_token;
 
     return this.http.post('api/token', request).pipe(
       map((response: OperationResult<Authentication>) =>

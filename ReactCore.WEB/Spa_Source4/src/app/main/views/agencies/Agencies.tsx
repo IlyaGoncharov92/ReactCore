@@ -2,7 +2,7 @@ import * as React                           from 'react';
 import { connect }                          from 'react-redux';
 import { IAppState }                        from '../../../../store';
 import { IAgenciesState }                   from '../../../../store/agencies/types';
-import { GetStoreAllProps }                 from '../../../types';
+import { GetPropsStoreRoute }               from '../../../types';
 import { agenciesAdd, agenciesClearAction } from '../../../../store/agencies/actions';
 import { UserDetails }                      from '../../../../models/dto.models';
 
@@ -11,7 +11,7 @@ interface AgenciesProps
 
 }
 
-type AllProps = GetStoreAllProps<AgenciesProps, IAgenciesState>;
+type AllProps = GetPropsStoreRoute<IAgenciesState, AgenciesProps>;
 
 class Agencies extends React.Component<AllProps>
 {

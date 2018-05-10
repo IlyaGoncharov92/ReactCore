@@ -3,6 +3,7 @@ import { Observable, throwError }                                             fr
 import { AuthService }                                                        from '../auth.service';
 import { catchError, map, mergeMap }                                          from 'rxjs/internal/operators';
 import { AccessTokenService }                                                 from './access.token.service';
+import { store }                                                              from '../../app/App';
 
 export enum HttpRequestMethod
 {
@@ -22,8 +23,6 @@ export interface IAxiosConfig extends AxiosRequestConfig
 
 class Interceptor
 {
-  private authService = new AuthService();
-
   public constructor(private httpClient: AxiosInstance)
   {
     httpClient.interceptors.request.use(this.onFulfilled);
@@ -31,7 +30,7 @@ class Interceptor
 
   private onFulfilled = (config: AxiosRequestConfig) =>
   {
-    const accessToken = this.authService.accessToken;
+    const accessToken = store.getState().authentication.authentication.access_token;
 
     if (accessToken)
     {
@@ -87,7 +86,7 @@ class BaseHttpService
 
   protected makeRequest<T>(method: HttpRequestMethod, url: string, data?: any): Observable<T>
   {
-    const accessToken = this.authService.accessToken;
+    const accessToken = store.getState().authentication.authentication.access_token;
 
     const requestConfig: AxiosRequestConfig = {
       url: url,

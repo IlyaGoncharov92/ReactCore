@@ -13,9 +13,7 @@ export const routeNavigate = (url: string): void =>
   history.push(url);
 };
 
-const initialState: IAppState = {};
-
-const store = configureStore(history, initialState);
+export const store = configureStore(history);
 
 export const App = () => (
   <Provider store={store}>

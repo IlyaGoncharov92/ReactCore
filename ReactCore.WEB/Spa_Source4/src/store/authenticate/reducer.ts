@@ -1,9 +1,11 @@
 import { AuthenticationActionType, IAuthenticationState } from './types';
-import { Authentication }                                 from '../../models/auth.models';
 import { IBaseAction }                                    from '../index';
+import { AuthService }                                    from '../../services/auth.service';
+
+const authService = new AuthService();
 
 const initialState: IAuthenticationState = {
-  authentication: new Authentication()
+  authentication: authService.auth
 };
 
 export const authenticationReducer = (state: IAuthenticationState = initialState, action: IBaseAction<AuthenticationActionType>): IAuthenticationState =>
@@ -18,4 +20,3 @@ export const authenticationReducer = (state: IAuthenticationState = initialState
       return state;
   }
 };
-

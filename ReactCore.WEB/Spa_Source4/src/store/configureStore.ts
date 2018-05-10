@@ -11,7 +11,9 @@ const isDevelopment =() =>
   return nodeEnv === 'development';
 };
 
-export function configureStore(history: History, initialState: IAppState): Store<IAppState>
+const initialState: IAppState = {};
+
+export function configureStore(history: History): Store<IAppState>
 {
   const composeEnhancers = isDevelopment()
     ? composeWithDevTools({})

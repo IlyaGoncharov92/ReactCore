@@ -1,11 +1,11 @@
 import * as React          from 'react';
-import { GetAllProps }     from '../types';
+import { GetPropsRoute }   from '../types';
 import { LoginService }    from '../../services/webapi/login.service';
 import { Authentication }  from '../../models/auth.models';
 import { OperationResult } from '../../models/dto.models';
 import { Page }            from '../../routing/Page';
 
-type AllProps = GetAllProps;
+type AllProps = GetPropsRoute;
 
 export class Login extends React.Component<AllProps>
 {
