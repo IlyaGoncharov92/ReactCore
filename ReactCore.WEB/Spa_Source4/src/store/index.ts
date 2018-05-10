@@ -1,11 +1,11 @@
-import { AnyAction, combineReducers, Reducer } from 'redux';
-import { routerReducer, RouterState }          from 'react-router-redux';
-import { IAgenciesState }                      from './agencies/types';
-import { agenciesReducer }                     from './agencies/reducer';
-import { IVolunteersState }                    from './volunteers/types';
-import { volunteersReducer }                   from './volunteers/reducer';
-import { IAuthenticationState }                from './authenticate/types';
-import { authenticationReducer }               from './authenticate/reducer';
+import { AnyAction, combineReducers, Reducer, Store } from 'redux';
+import { routerReducer, RouterState }                 from 'react-router-redux';
+import { IAgenciesState }                             from './agencies/types';
+import { agenciesReducer }                            from './agencies/reducer';
+import { IVolunteersState }                           from './volunteers/types';
+import { volunteersReducer }                          from './volunteers/reducer';
+import { IAuthenticationState }                       from './authenticate/types';
+import { authenticationReducer }                      from './authenticate/reducer';
 
 export interface IAppState
 {

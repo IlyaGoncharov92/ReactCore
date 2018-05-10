@@ -1,33 +1,33 @@
-import * as React                           from 'react';
-import { connect }                          from 'react-redux';
-import { IAppState }                        from '../../../../store';
-import { IAgenciesState }                   from '../../../../store/agencies/types';
-import { GetPropsStoreRoute }               from '../../../types';
-import { agenciesAdd, agenciesClearAction } from '../../../../store/agencies/actions';
-import { UserDetails }                      from '../../../../models/dto.models';
+import * as React                                        from 'react';
+import { connect }                                       from 'react-redux';
+import { IAppState }                                     from '../../../../store';
+import { IAgenciesState }                                from '../../../../store/agencies/types';
+import { GetPropsStoreRoute }                            from '../../../types';
+import { agenciesAddAction, agenciesClearActionCreator } from '../../../../store/agencies/actions';
+import { UserDetails }                                   from '../../../../models/dto.models';
 
 interface AgenciesProps
 {
-
+  test: string;
 }
 
-type AllProps = GetPropsStoreRoute<IAgenciesState, AgenciesProps>;
+type Props = GetPropsStoreRoute<IAgenciesState, AgenciesProps>;
 
-class Agencies extends React.Component<AllProps>
+class Agencies extends React.Component<Props>
 {
-  public constructor(props: AllProps)
+  public constructor(props: Props)
   {
     super(props);
   }
 
   componentDidMount()
   {
-    this.props.dispatch(agenciesAdd());
+    this.props.dispatch(agenciesAddAction());
   }
 
   componentWillUnmount()
   {
-    this.props.dispatch(agenciesClearAction())
+    this.props.dispatch(agenciesClearActionCreator())
   }
 
   render()

@@ -13,12 +13,6 @@ export enum AgenciesActionType
   AGENCIES_CLEAR = 'AGENCIES_CLEAR'
 }
 
-export interface IAgenciesListAction extends IBaseAction<AgenciesActionType>
-{
-  type: AgenciesActionType.AGENCIES_LIST,
-  payload: UserDetails[]
-}
-
 export interface IAgenciesAddAction extends IBaseAction<AgenciesActionType>
 {
   type: AgenciesActionType.AGENCIES_ADD,

@@ -2,6 +2,7 @@ import * as React                               from 'react';
 import { Redirect, Route, RouteComponentProps } from 'react-router';
 import { Component }                            from 'react-redux';
 import { Page }                                 from './Page';
+import { State }                                from '../store/configureStore';
 
 export interface RouteProps
 {
@@ -11,7 +12,7 @@ export interface RouteProps
 
 export const PrivateRoute = ({component: Component, ...rest}: RouteProps) => (
   <Route {...rest} render={(props) => (
-    5 > 3
+    State.authentication.authentication
       ? <Component {...props} />
       : <Redirect to={{
         pathname: Page.login.path,

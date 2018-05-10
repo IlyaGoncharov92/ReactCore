@@ -1,9 +1,8 @@
 import axios, { AxiosError, AxiosInstance, AxiosPromise, AxiosRequestConfig } from 'axios';
 import { Observable, throwError }                                             from 'rxjs/index';
-import { AuthService }                                                        from '../auth.service';
 import { catchError, map, mergeMap }                                          from 'rxjs/internal/operators';
 import { AccessTokenService }                                                 from './access.token.service';
-import { store }                                                              from '../../app/App';
+import { State }                                                              from '../../store/configureStore';
 
 export enum HttpRequestMethod
 {
@@ -30,7 +29,7 @@ class Interceptor
 
   private onFulfilled = (config: AxiosRequestConfig) =>
   {
-    const accessToken = store.getState().authentication.authentication.access_token;
+    const accessToken = State.authentication.authentication ? State.authentication.authentication.access_token : null;
 
     if (accessToken)
     {
@@ -73,8 +72,6 @@ class HttpErrorHandler<T>
 
 class BaseHttpService
 {
-  private authService = new AuthService();
-
   private _httpClient: AxiosInstance;
 
   protected constructor(config: IAxiosConfig = {})
@@ -86,17 +83,10 @@ class BaseHttpService
 
   protected makeRequest<T>(method: HttpRequestMethod, url: string, data?: any): Observable<T>
   {
-    const accessToken = store.getState().authentication.authentication.access_token;
-
     const requestConfig: AxiosRequestConfig = {
       url: url,
       method: HttpRequestMethod[method],
-      data: data,
-      headers: {
-        Test: 'zzzz',
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${accessToken}`
-      }
+      data: data
     };
 
     let request: AxiosPromise<T> = this._httpClient.request(requestConfig);

@@ -1,23 +1,23 @@
-import * as React                               from 'react';
-import { GetPropsStoreRoute }                   from '../../../types';
-import { IVolunteersState }                     from '../../../../store/volunteers/types';
-import { UserDetails }                          from '../../../../models/dto.models';
-import { IAppState }                            from '../../../../store';
-import { connect }                              from 'react-redux';
-import { volunteersAdd, volunteersClearAction } from '../../../../store/volunteers/actions';
+import * as React                                            from 'react';
+import { GetPropsStoreRoute }                                from '../../../types';
+import { IVolunteersState }                                  from '../../../../store/volunteers/types';
+import { UserDetails }                                       from '../../../../models/dto.models';
+import { IAppState }                                         from '../../../../store';
+import { connect }                                           from 'react-redux';
+import { volunteersAddAction, volunteersClearActionCreator } from '../../../../store/volunteers/actions';
 
-type AllProps = GetPropsStoreRoute<IVolunteersState>;
+type Props = GetPropsStoreRoute<IVolunteersState>;
 
-class Volunteers extends React.Component<AllProps>
+class Volunteers extends React.Component<Props>
 {
   componentDidMount()
   {
-    this.props.dispatch(volunteersAdd());
+    this.props.dispatch(volunteersAddAction());
   }
 
   componentWillUnmount()
   {
-    this.props.dispatch(volunteersClearAction());
+    this.props.dispatch(volunteersClearActionCreator());
   }
 
   render()

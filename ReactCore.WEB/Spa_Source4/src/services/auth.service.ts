@@ -1,7 +1,7 @@
-import { StorageService }                                 from './storage.service';
-import { Authentication }                                 from '../models/auth.models';
-import { store }                                          from '../app/App';
-import { authenticationLogIn, authenticationLogInAction } from '../store/authenticate/actions';
+import { StorageService }            from './storage.service';
+import { Authentication }            from '../models/auth.models';
+import { authenticationLogInAction } from '../store/authenticate/actions';
+import { State }                     from '../store/configureStore';
 
 export class AuthService
 {
@@ -16,7 +16,7 @@ export class AuthService
 
   public initialize(auth: Authentication): void
   {
-    store.dispatch(authenticationLogIn(auth));
+    State.dispatch(authenticationLogInAction(auth));
 
     this.storage.global.setObject<Authentication>(AuthService.AUTHENTICATION, auth);
   }

@@ -5,22 +5,22 @@ import { UserDetails }                                                        fr
 
 const service = new VolunteerService();
 
-export const volunteersAddAction: ActionCreator<IVolunteersAddAction> = (users: UserDetails[]) => ({
+export const volunteersAddActionCreator: ActionCreator<IVolunteersAddAction> = (users: UserDetails[]) => ({
   type: VolunteersActionType.VOLUNTEERS_ADD,
   payload: users
 });
 
-export const volunteersClearAction: ActionCreator<IVolunteersClearAction> = () => ({
+export const volunteersClearActionCreator: ActionCreator<IVolunteersClearAction> = () => ({
   type: VolunteersActionType.VOLUNTEERS_CLEAR
 });
 
-export const volunteersAdd = () =>
+export const volunteersAddAction = () =>
 {
   return (dispatch: Dispatch<any>) =>
   {
     service.list().subscribe((users: UserDetails) =>
     {
-      dispatch(volunteersAddAction(users));
+      dispatch(volunteersAddActionCreator(users));
     });
   }
 };

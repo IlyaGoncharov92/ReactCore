@@ -1,9 +1,11 @@
-import { applyMiddleware, compose, createStore, Middleware, Store } from 'redux';
-import { composeWithDevTools }                                      from 'redux-devtools-extension';
-import { routerMiddleware }                                         from 'react-router-redux';
-import thunk                                                        from 'redux-thunk';
-import { History }                                                  from 'history';
-import { IAppState, reducers }                                      from './index';
+import { applyMiddleware, compose, createStore, Dispatch, Middleware, Store } from 'redux';
+import { composeWithDevTools }                                                from 'redux-devtools-extension';
+import { routerMiddleware }                                                   from 'react-router-redux';
+import thunk                                                                  from 'redux-thunk';
+import { History }                                                            from 'history';
+import { IAppState, reducers }                                                from './index';
+import createHistory                                                          from 'history/createBrowserHistory';
+import { IAuthenticationState }                                     from './authenticate/types';
 
 const isDevelopment =() =>
 {
@@ -13,7 +15,7 @@ const isDevelopment =() =>
 
 const initialState: IAppState = {};
 
-export function configureStore(history: History): Store<IAppState>
+function configureStore(history: History): Store<IAppState>
 {
   const composeEnhancers = isDevelopment()
     ? composeWithDevTools({})
@@ -29,4 +31,26 @@ export function configureStore(history: History): Store<IAppState>
     initialState,
     composeEnhancers(applyMiddleware(...middlewares)),
   );
+}
+
+const history = createHistory();
+
+const store = configureStore(history);
+
+export class State
+{
+  public static get store(): Store<IAppState>
+  {
+    return store;
+  }
+
+  public static get dispatch(): Dispatch<IAppState>
+  {
+    return store.dispatch;
+  }
+
+  public static get authentication(): IAuthenticationState
+  {
+    return store.getState().authentication;
+  }
 }

@@ -5,16 +5,16 @@ import { Authentication }  from '../../models/auth.models';
 import { OperationResult } from '../../models/dto.models';
 import { Page }            from '../../routing/Page';
 
-type AllProps = GetPropsRoute;
+type Props = GetPropsRoute;
 
-export class Login extends React.Component<AllProps>
+export class Login extends React.Component<Props>
 {
   private loginService = new LoginService();
 
   private emailElement: HTMLInputElement;
   private passwordElement: HTMLInputElement;
 
-  public constructor(props: AllProps)
+  public constructor(props: Props)
   {
     super(props);
 

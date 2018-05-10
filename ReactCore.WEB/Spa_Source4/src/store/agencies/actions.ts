@@ -1,31 +1,26 @@
-import { ActionCreator, Dispatch }                                                           from 'redux';
-import { AgenciesActionType, IAgenciesAddAction, IAgenciesClearAction, IAgenciesListAction } from './types';
-import { UserDetails }                                                                       from '../../models/dto.models';
-import { AgencyService }                                                                     from '../../services/webapi/agency.service';
+import { ActionCreator, Dispatch }                                      from 'redux';
+import { AgenciesActionType, IAgenciesAddAction, IAgenciesClearAction } from './types';
+import { UserDetails }                                                  from '../../models/dto.models';
+import { AgencyService }                                                from '../../services/webapi/agency.service';
 
 const service = new AgencyService();
 
-export const agenciesListAction: ActionCreator<IAgenciesListAction> = (users: UserDetails[]) => ({
-  type: AgenciesActionType.AGENCIES_LIST,
-  payload: users
-});
-
-export const agenciesAddAction: ActionCreator<IAgenciesAddAction> = (users: UserDetails[]) => ({
+export const agenciesAddActionCreator: ActionCreator<IAgenciesAddAction> = (users: UserDetails[]) => ({
   type: AgenciesActionType.AGENCIES_ADD,
   payload: users
 });
 
-export const agenciesClearAction: ActionCreator<IAgenciesClearAction> = () => ({
+export const agenciesClearActionCreator: ActionCreator<IAgenciesClearAction> = () => ({
   type: AgenciesActionType.AGENCIES_CLEAR
 });
 
-export const agenciesAdd = () =>
+export const agenciesAddAction = () =>
 {
   return (dispatch: Dispatch<any>) =>
   {
     service.list().subscribe((users: UserDetails[]) =>
     {
-      dispatch(agenciesAddAction(users));
+      dispatch(agenciesAddActionCreator(users));
     });
   }
 };

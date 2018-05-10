@@ -6,20 +6,15 @@ import { GetPropsStore }        from '../types';
 import { IAuthenticationState } from '../../store/authenticate/types';
 import { UserDetails }          from '../../models/dto.models';
 
-type AllProps = GetPropsStore<IAuthenticationState>;
+type Props = GetPropsStore<IAuthenticationState>;
 
-class Header extends React.Component<AllProps>
+class Header extends React.Component<Props>
 {
   private user = new UserDetails();
 
-  public constructor(props: AllProps)
+  public constructor(props: Props)
   {
     super(props);
-  }
-
-  componentWillReceiveProps(nextProps: any, nextState: any)
-  {
-    console.log('componentDidUpdate')
   }
 
   render()
